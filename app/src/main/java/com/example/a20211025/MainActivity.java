@@ -33,14 +33,21 @@ public class MainActivity extends AppCompatActivity {
                     float height = Float.parseFloat(heightEditText.getText().toString())/100;
                     float weight = Float.parseFloat(weightEditText.getText().toString());
 
-                    float result = weight / (height * height);
+                    float bmi = weight / (height * height);
+                    String result ;
+                    if (bmi < 18.5){
+                        result = "您的bmi為" + bmi + ",您已過輕";
+                    }else if(bmi > 24){
+                        result = "您的bmi為" + bmi + ",您已過重";
+                    }else{
+                        result = "您的bmi為" + bmi + ",您很健康";
+                    }
 
                     Toast toast = Toast.makeText(
-                            MainActivity.this,
-                            Float.toString(result),
+                            getApplicationContext(),
+                            result,
                             Toast.LENGTH_SHORT);
                     toast.show();
-
                 } catch (
                         NumberFormatException e
                 ) {
